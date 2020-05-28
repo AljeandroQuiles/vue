@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+    <link rel="stylesheet" href="main.css">
+ 
+</head>
+<body>
+    
+    <main>
+
+    <usuarios>
+        <h1>Usuarios de la agenda</h1>
+    </usuarios>
+    </main>
+    <template id="usuarios-template">
+        <div>
+            <section class="cabecera">
+                <slot></slot>
+                <input type="search" placeholder="filtrar usuarios" v-model="busqueda">
+            </section>
+            <hr>
+            <section class="usuarios">
+                <usuario :datos="usuario" v-for="usuario in filtrarUsuarios"></usuario>
+            </section>
+        </div>
+    </template>
+
+    <template id="usuario-template">
+            <div class="usuario">
+                <img align="left" :src="datos.foto" alt="datos.nombre">
+                <section>
+                    <h1>{{ datos.nombre }}</h1>
+                    <small> {{ datos.correoe}}</small>
+                </section>
+            </div>
+    </template>
+ 
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
